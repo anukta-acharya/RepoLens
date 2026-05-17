@@ -6,6 +6,8 @@ function Results() {
 
   const data = location.state;
 
+  console.log(data);
+
   if (!data) {
     return (
       <div
@@ -28,43 +30,60 @@ function Results() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(to bottom right,#020617,#111827)",
+        backgroundImage:
+          "linear-gradient(rgba(2,6,23,0.88), rgba(15,23,42,0.92)), url('/images/results-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
         color: "white",
-        padding: "60px",
+        padding: "50px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
         style={{
-          width: "750px",
-          padding: "40px",
-          borderRadius: "28px",
+          width: "850px",
+          padding: "45px",
+          borderRadius: "30px",
           background: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(12px)",
+          backdropFilter: "blur(14px)",
           border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "0 0 45px rgba(99,102,241,0.25)",
+          boxShadow: "0 0 50px rgba(139,92,246,0.25)",
         }}
       >
         <h1
           style={{
-            fontSize: "44px",
+            fontSize: "52px",
+            marginBottom: "15px",
+            fontWeight: "bold",
+            background: "linear-gradient(90deg,#a855f7,#3b82f6)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Analysis Results
+        </h1>
+
+        <h2
+          style={{
+            fontSize: "30px",
             marginBottom: "10px",
-            fontWeight: "700",
           }}
         >
           {data.name || "Repository"}
-        </h1>
+        </h2>
 
         <p
           style={{
             color: "#cbd5e1",
             marginBottom: "35px",
             lineHeight: "1.8",
+            fontSize: "17px",
           }}
         >
           {data.description || "No description available."}
@@ -74,42 +93,49 @@ function Results() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "22px",
+            gap: "24px",
           }}
         >
-          <div style={cardStyle}>
-            ⭐ Stars
+          <motion.div whileHover={{ scale: 1.05 }} style={cardStyle}>
+            ⭐
+            <h3>Stars</h3>
             <h2>{data.stars ?? 0}</h2>
-          </div>
+          </motion.div>
 
-          <div style={cardStyle}>
-            🍴 Forks
+          <motion.div whileHover={{ scale: 1.05 }} style={cardStyle}>
+            🍴
+            <h3>Forks</h3>
             <h2>{data.forks ?? 0}</h2>
-          </div>
+          </motion.div>
 
-          <div style={cardStyle}>
-            🐛 Open Issues
+          <motion.div whileHover={{ scale: 1.05 }} style={cardStyle}>
+            🐛
+            <h3>Open Issues</h3>
             <h2>{data.issues ?? 0}</h2>
-          </div>
+          </motion.div>
 
-          <div style={cardStyle}>
-            💻 Language
+          <motion.div whileHover={{ scale: 1.05 }} style={cardStyle}>
+            💻
+            <h3>Language</h3>
             <h2>{data.language || "Not detected"}</h2>
-          </div>
+          </motion.div>
         </div>
 
         <div
           style={{
-            marginTop: "30px",
-            padding: "22px",
-            borderRadius: "18px",
+            marginTop: "35px",
+            padding: "25px",
+            borderRadius: "22px",
             background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.06)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 0 30px rgba(59,130,246,0.15)",
           }}
         >
           <h3
             style={{
-              marginBottom: "10px",
+              marginBottom: "12px",
+              fontSize: "22px",
             }}
           >
             ⚡ Last Commit
@@ -118,6 +144,7 @@ function Results() {
           <p
             style={{
               color: "#cbd5e1",
+              fontSize: "16px",
             }}
           >
             {data.lastCommit
@@ -127,22 +154,24 @@ function Results() {
         </div>
 
         <Link to="/">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             style={{
-              marginTop: "35px",
-              padding: "14px 34px",
-              borderRadius: "14px",
+              marginTop: "40px",
+              padding: "16px 38px",
+              borderRadius: "16px",
               border: "none",
               background: "linear-gradient(90deg,#3b82f6,#9333ea)",
               color: "white",
               cursor: "pointer",
-              fontSize: "16px",
+              fontSize: "17px",
               fontWeight: "600",
-              boxShadow: "0 0 20px rgba(99,102,241,0.4)",
+              boxShadow: "0 0 25px rgba(147,51,234,0.4)",
             }}
           >
             Back Home
-          </button>
+          </motion.button>
         </Link>
       </motion.div>
     </div>
@@ -151,11 +180,13 @@ function Results() {
 
 const cardStyle = {
   background: "rgba(255,255,255,0.05)",
-  padding: "28px",
-  borderRadius: "20px",
+  padding: "30px",
+  borderRadius: "22px",
   textAlign: "center",
   fontSize: "18px",
-  border: "1px solid rgba(255,255,255,0.06)",
+  border: "1px solid rgba(255,255,255,0.08)",
+  backdropFilter: "blur(12px)",
+  boxShadow: "0 0 25px rgba(139,92,246,0.15)",
 };
 
 export default Results;

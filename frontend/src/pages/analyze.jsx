@@ -39,7 +39,11 @@ function Analyze() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(to bottom right, #020617, #0f172a)",
+        backgroundImage: "url('/images/analyze-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -47,19 +51,30 @@ function Analyze() {
         padding: "20px",
       }}
     >
+      {/* Dark Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.7)",
+        }}
+      ></div>
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         style={{
+          position: "relative",
+          zIndex: 10,
           width: "600px",
           padding: "40px",
           borderRadius: "25px",
-          background: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(12px)",
+          background: "rgba(255,255,255,0.08)",
+          backdropFilter: "blur(14px)",
           border: "1px solid rgba(255,255,255,0.1)",
           textAlign: "center",
-          boxShadow: "0 0 50px rgba(139,92,246,0.2)",
+          boxShadow: "0 0 50px rgba(139,92,246,0.3)",
         }}
       >
         <h1

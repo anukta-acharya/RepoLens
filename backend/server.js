@@ -22,13 +22,18 @@ app.post("/analyze", async (req, res) => {
 
     const data = response.data;
 
+    console.log(data);
+
     res.json({
-       stars: data.stargazers_count,
-       forks: data.forks_count,
-       issues: data.open_issues_count,
-       language: data.language,
-       lastCommit: data.updated_at,
+      name: data.name,
+      description: data.description,
+      stars: data.stargazers_count,
+      forks: data.forks_count,
+      issues: data.open_issues_count,
+      language: data.language,
+      lastCommit: data.updated_at,
     });
+
   } catch (error) {
     console.log(error.message);
 
