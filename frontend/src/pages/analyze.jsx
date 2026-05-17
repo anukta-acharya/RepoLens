@@ -12,15 +12,18 @@ function Analyze() {
     try {
       setLoading(true);
 
-      const response = await fetch("https://repolens-6l4w.onrender.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          repoUrl,
-        }),
-      });
+      const response = await fetch(
+        "https://repolens-6l4w.onrender.com/analyze",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            repoUrl,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -51,7 +54,6 @@ function Analyze() {
         padding: "20px",
       }}
     >
-      {/* Dark Overlay */}
       <div
         style={{
           position: "absolute",
