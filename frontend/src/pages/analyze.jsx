@@ -12,7 +12,7 @@ function Analyze() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/analyze", {
+      const response = await fetch("https://repolens-6l4w.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
